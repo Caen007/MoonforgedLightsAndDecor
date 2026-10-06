@@ -1,0 +1,17 @@
+{
+    "name": "MoonforgedLightsAndDecor",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Caen007/MoonforgedLightsAndDecor",
+    "description": "A standalone Moonforged collection of rugs, furniture, lamps, porcelain sets, benches, cannons and decorative build pieces. Includes Valheim 1.0 build-menu sorting, configurable Moonforged categories and multiplayer-synced persistent lamp colors.",
+    "dependencies": [
+        "denikson-BepInExPack_Valheim-5.4.2351",
+        "ValheimModding-Jotunn-2.30.2"
+    ],
+    "categories": [
+        "Building",
+        "Mods",
+        "Client-side",
+        "Server-side",
+        "Deep North Update"
+    ]
+}
