@@ -1,8 +1,10 @@
 # Moonforged Lights and Decor
 
+![Shields](https://raw.githubusercontent.com/Caen007/MoonforgedLightsAndDecor/main/img/Shields.png)
+
 A standalone Moonforged collection of rugs, furniture, lamps, porcelain sets, benches, cannons, and decorative build pieces.
 
-Includes Valheim 1.0 build-menu sorting, configurable Moonforged categories, multiplayer-synchronized lamp colors, persistent lamp states, and support for custom lamp colors.
+Includes Valheim 1.0 build-menu sorting, configurable Moonforged categories, multiplayer-synchronized and persistent lamp colors, custom lamp colors, and configurable lamp flare and bulb brightness settings.
 
 **Windows version included.**
 
@@ -20,11 +22,105 @@ Moonforged Lights and Decor was split from the original **Moonforged Build Piece
 
 ---
 
-# v1.0.0 Content
+# Mod Content
 
 ## 💡 Lighting
 
-A collection of street lamps, wall-mounted lamps, fantasy lamps, and decorative lighting.
+A collection of street lamps, wall-mounted lamps, fantasy lamps, and decorative lighting, including two new additions in v1.0.2.
+
+### New in v1.0.2 — Emberwrought Lantern
+
+A dark medieval-fantasy lantern with intricate ironwork and a fiery orange glow.
+
+### New in v1.0.2 — Wrought Iron Lantern Post
+
+An elegant outdoor lamp post with decorative wrought iron and warm lighting.
+
+# 💡 Lamp Features
+
+Moonforged lamps include multiplayer-synchronized color switching and persistent light settings. The configuration also provides control over decorative flares and bulb brightness.
+
+## Available Lamp Colors
+
+Interact with a lamp using **E** to cycle through the available light settings.
+
+The lamps include several preset colors as well as a configurable custom color.
+
+Available options include:
+
+- Yellow
+- Green
+- Blue
+- Dvergr Pink
+- Custom Color
+- Off
+
+---
+
+## 🎨 Custom Lamp Color
+
+Players can define their own custom lamp color in the **Moonforged Lights and Decor configuration file**.
+
+The custom color uses standard HTML HEX color format:
+
+`#RRGGBB`
+
+Example:
+
+```ini
+CustomLampColor = #FF7A00
+```
+
+Some example colors:
+
+- `#FF0000` – Red
+- `#00FF00` – Green
+- `#0000FF` – Blue
+- `#00FFFF` – Cyan
+- `#FF7A00` – Orange
+- `#9B30FF` – Purple
+- `#FFFFFF` – White
+
+The configured custom color becomes part of the lamp's normal color cycle.
+
+---
+
+## ✨ Lamp Flare and Bulb Brightness
+
+The configuration includes controls for the orange glow/flare around lamp bulbs and the brightness of the bulbs themselves.
+
+- **EnableFlare** – Enable or disable the decorative flare effect around lamp bulbs without turning off the light illuminating the surroundings.
+- **BulbBrightness** – Adjust how brightly the bulb itself appears.
+
+Flare setting changes apply without restarting the game. When a lamp is switched off, its flare is also disabled.
+
+---
+
+## 🌐 Multiplayer Lamp Synchronization
+
+Lamp settings are synchronized through Valheim's networking system.
+
+- Any player can interact with a lamp.
+- The network owner processes and synchronizes the requested change.
+- All players see the same selected lamp color.
+- Custom colors are synchronized with the lamp.
+- Turning a lamp off is synchronized for everyone.
+
+This means one player changing a lamp will also update the lamp for the other players in the world.
+
+---
+
+## 💾 Persistent Lamp Settings
+
+Lamp settings are stored in the world's network data.
+
+This means:
+
+- Selected lamp colors remain after logging out.
+- Lamps that are turned off remain off after logging back in.
+- Lamp settings survive world reloads.
+- Other players joining the world see the currently saved lamp state and color.
+-------------
 
 ### Classic Bench and Bin
 
@@ -142,79 +238,6 @@ Decorative cannon sets for docks, fortifications, ships, castles, and settlement
 
 ---
 
-# 💡 Lamp Features
-
-Moonforged lamps include multiplayer-synchronized color switching and persistent light settings.
-
-## Available Lamp Colors
-
-Interact with a lamp using **E** to cycle through the available light settings.
-
-The lamps include several preset colors as well as a configurable custom color.
-
-Available options include:
-
-- Yellow
-- Green
-- Blue
-- Dvergr Pink
-- Custom Color
-- Off
-
----
-
-## 🎨 Custom Lamp Color
-
-Players can define their own custom lamp color in the **Moonforged Lights and Decor configuration file**.
-
-The custom color uses standard HTML HEX color format:
-
-`#RRGGBB`
-
-Example:
-
-```ini
-CustomLampColor = #FF7A00
-```
-
-Some example colors:
-
-- `#FF0000` – Red
-- `#00FF00` – Green
-- `#0000FF` – Blue
-- `#00FFFF` – Cyan
-- `#FF7A00` – Orange
-- `#9B30FF` – Purple
-- `#FFFFFF` – White
-
-The configured custom color becomes part of the lamp's normal color cycle.
-
----
-
-## 🌐 Multiplayer Lamp Synchronization
-
-Lamp settings are synchronized through Valheim's networking system.
-
-- Any player can interact with a lamp.
-- The network owner processes and synchronizes the requested change.
-- All players see the same selected lamp color.
-- Custom colors are synchronized with the lamp.
-- Turning a lamp off is synchronized for everyone.
-
-This means one player changing a lamp will also update the lamp for the other players in the world.
-
----
-
-## 💾 Persistent Lamp Settings
-
-Lamp settings are stored in the world's network data.
-
-This means:
-
-- Selected lamp colors remain after logging out.
-- Lamps that are turned off remain off after logging back in.
-- Lamp settings survive world reloads.
-- Other players joining the world see the currently saved lamp state and color.
 
 ---
 
@@ -297,7 +320,7 @@ They will also appear inside their appropriate Valheim build-menu sorting catego
 - Watch live on **Twitch**: [https://www.twitch.tv/Caen007](https://www.twitch.tv/Caen007)
 - Videos and tutorials on **YouTube**: [https://www.youtube.com/@Caenos007](https://www.youtube.com/@Caenos007)
 - Join the discussion on **Reddit**: [Modded Valheim Discussion](https://www.reddit.com/r/ModdedValheim/comments/1vw3n30/comment/p5dtktq/?screen_view_count=2&ext-referrer=DIRECT)
-- Support the project: 💖 [PayPal](https://www.paypal.com/paypalme/czalbert)
+- Support the project: 💖 [PayPal](https://www.paypal.com/paypalme/Caenos)
 
 ---
 
@@ -313,3 +336,4 @@ They will also appear inside their appropriate Valheim build-menu sorting catego
 - **Khaine** – Testing and support
 - **Rocket** – Testing and support
 - **Kizzycocoa** – Testing and support
+- **Chaddaddy** – Testing and support

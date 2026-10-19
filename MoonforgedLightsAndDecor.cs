@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using BepInEx;
+using HarmonyLib;
 using UnityEngine;
 using Jotunn.Managers;
 
@@ -13,13 +14,17 @@ namespace Moonforged.LightsAndDecor
     {
         public const string PluginGUID = "Moonforged.LightsAndDecor";
         public const string PluginName = "Moonforged Lights and Decor";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.3";
 
         private AssetBundle relicsBundle;
+        private Harmony bedInteractionHarmony;
 
 
         private void Awake()
         {
+            bedInteractionHarmony = new Harmony(PluginGUID + ".VikingBedInteraction");
+            bedInteractionHarmony.PatchAll(typeof(VikingBedInteractionPatch));
+
             // INIT CONFIG SYSTEM
             RelicConfigManager.Init(PluginGUID, Config);
 
@@ -60,6 +65,7 @@ namespace Moonforged.LightsAndDecor
         private void OnDestroy()
         {
             PrefabManager.OnPrefabsRegistered -= OnPrefabsRegistered;
+            bedInteractionHarmony?.UnpatchSelf();
         }
 
         private void OnPrefabsRegistered()

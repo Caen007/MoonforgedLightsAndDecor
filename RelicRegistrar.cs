@@ -34,337 +34,360 @@ namespace Moonforged.LightsAndDecor
     {
         private static bool wasAlreadyRegistered = false; // HOTFIX stays untouched
 
-        // Configurable hammer categories
+        // Configurable hammer category
         private static ConfigEntry<string> CustomHammerTabConfig;
-        private static ConfigEntry<string> FurnitureCategoryConfig;
-        private static ConfigEntry<string> BuildingCategoryConfig;
-        private static ConfigEntry<string> ClutterCategoryConfig;
-        private static ConfigEntry<string> StatuesCategoryConfig;
 
         public static readonly List<RelicRegistration> AllRegistrations = new()
         {
-            //--------------------- Furniture
-            
+            // ---------------------- Shields ----------------------
+
+            // 0.
+            new RelicRegistration("M_Viking_Shiled_Axes","Wall-Mounted Viking Shield and Axes", new[]{
+                new RequirementConfig("Bronze",2), new RequirementConfig("Wood",10), new RequirementConfig("Copper",2)
+            },"","building"),
+
+
             // 1.
-            new RelicRegistration("M_FineWood_Throne","Moonforged FineWood Throne", new[]{
-                new RequirementConfig("FineWood",20)
-            },"A custom decorative piece.","furniture", 2),
+            new RelicRegistration("M_Viking_Shiled_Dragons","Wall-Mounted Viking Shield Dragons", new[]{
+                new RequirementConfig("Bronze",2), new RequirementConfig("Wood",10), new RequirementConfig("Copper",2)
+            },"","building"),
 
             // 2.
+            new RelicRegistration("M_Viking_Shiled_Crows","Wall-Mounted Viking Shield Ravens", new[]{
+                new RequirementConfig("Bronze",2), new RequirementConfig("Wood",10), new RequirementConfig("Copper",2)
+            },"","building"),
 
-new RelicRegistration("M_Werewolf_Throne","Moonforged Werewolf Throne", new[]{
-    new RequirementConfig("WolfPelt",5),
-    new RequirementConfig("TrophyFenring",3),
-    new RequirementConfig("Iron",5)
-},"A custom decorative piece.","furniture", 2),
+            // ---------------------- Lamps and Lighting ----------------------
 
-// 3.
+            // 3.
+            new RelicRegistration("M_Emberwrought_Lamp","Emberwrought Lamp", new[]{
+                new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
+            },"","building"),
 
-new RelicRegistration("M_Wolf_Throne","Moonforged Geirrhafa`s Throne", new[]{
-    new RequirementConfig("FineWood",5),
-    new RequirementConfig("WolfPelt",5),
-    new RequirementConfig("Silver",5),
-    new RequirementConfig("TrophyCultist_Hildir",1)
-},"A custom decorative piece.","furniture", 2),
-
-// 4.
-
-new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
-    new RequirementConfig("Iron",10),
-    new RequirementConfig("Bronze",10)
-
-},"A custom decorative piece.","furniture", 2),
-
-                
-            
-            // ---------------------- Rugs ------------------------
-
+            // 4.
+            new RelicRegistration("M_Wrought_Iron_Lantern_Post","Wrought Iron Lamp Post", new[]{
+                new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
+            },"","building"),
 
             // 5.
-            new RelicRegistration("M_PersianRug_1","Persian Rug I", new[]{
-                new RequirementConfig("JuteRed",4),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 6.
-            new RelicRegistration("M_PersianRug_2","Persian Rug II", new[]{
-                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            
-            
-            // 7.
-            new RelicRegistration("M_PersianRug_4","Regal Persian Rug", new[]{
-                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 8.
-            new RelicRegistration("M_Jute_Stairs_Rug","Jute Stair Rug", new[]{
-                new RequirementConfig("JuteRed",4),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 9.
-            new RelicRegistration("M_Jute_Stairs_Rug_Blue","Blue Jute Stair Rug", new[]{
-                new RequirementConfig("JuteBlue",2),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 10.
-            new RelicRegistration("M_Jute_Stairs_Rug_Blue_Runed","Runed Blue Jute Stair Rug", new[]{
-                new RequirementConfig("JuteBlue",2),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 11.
-            new RelicRegistration("M_Jute_Stairs_Rug_Small","Small Jute Stair Rug", new[]{
-                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 12.
-            new RelicRegistration("M_Jute_Stairs_Runed","Runed Jute Stair Rug", new[]{
-                new RequirementConfig("JuteRed",4),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 13.
-            new RelicRegistration("M_Stairs_Rug_Wool","Wool Stair Rug", new[]{
-                new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 14.
-            new RelicRegistration("M_Stairs_Rug_Green_Runed","Runed Green Stair Rug", new[]{
-                new RequirementConfig("JuteRed",4), new RequirementConfig("Ooze",1)
-            },"A custom decorative piece.","furniture"),
-
-            // 15.
-            new RelicRegistration("M_Stairs_Rug_Green","Green Stair Rug", new[]{
-                new RequirementConfig("JuteRed",4), new RequirementConfig("Ooze",1)
-            },"A custom decorative piece.","furniture"),
-
-            // 16.
-            new RelicRegistration("M_BlueRug","Blue Rug", new[]{
-                new RequirementConfig("JuteBlue",4),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 17.
-            new RelicRegistration("M_Red_2m_semiround_rug","Red Semiround Rug", new[]{
-                new RequirementConfig("JuteRed",4),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 18.
-            new RelicRegistration("M_2m_semiround_rug","Brown Semiround Rug", new[]{
-                new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-            // 19.
-            new RelicRegistration("M_Jute_Round_Red_Rug","Round Red Jute Rug", new[]{
-                new RequirementConfig("JuteRed",4),new RequirementConfig("DeerHide",4)
-            },"A custom decorative piece.","furniture"),
-
-                        // 20.
-            new RelicRegistration("M_TrollRoundRug","Troll Hide Round Rug", new[]{
-                new RequirementConfig("TrollHide",5),new RequirementConfig("DeerHide",5)
-            },"A custom decorative piece.","furniture"),
-
-                                    // 21.
-            new RelicRegistration("M_TrollHideRug","Troll Hide Rug", new[]{
-                new RequirementConfig("TrollHide",10),new RequirementConfig("DeerHide",5)
-            },"A custom decorative piece.","furniture"),
-
-                                                // 22.
-            new RelicRegistration("M_TrollSemiRoundRug","Troll Hide Semi Round Rug", new[]{
-                new RequirementConfig("TrollHide",2),new RequirementConfig("DeerHide",5)
-            },"A custom decorative piece.","furniture"),
-
-                                                            // 23.
-            new RelicRegistration("M_TrollSemiRoundRugRuned","Troll Hide Runed Semi Round Rug", new[]{
-                new RequirementConfig("TrollHide",2),new RequirementConfig("GreydwarfEye",2),
-            },"A custom decorative piece.","furniture"),
-
-                                                                        // 24.
-            new RelicRegistration("M_TrollPeltRug","Troll Pelt Rug", new[]{
-                new RequirementConfig("TrollHide",10), new RequirementConfig("TrophyForestTroll",1)
-            },"A custom decorative piece.","furniture"),
-
-            // 25.
-            new RelicRegistration("M_Jute_Red_Simple_Rug","Simple Red Jute Rug", new[]{
-                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",5)
-            },"A custom decorative piece.","furniture"),
-
-            // ---------------------- Porcelain / Tea Set ---------
-
-            // 26.
-            new RelicRegistration("M_AsianTeaSetPlate","Tea Plate", new[]{
-                new RequirementConfig("Wood",1), new RequirementConfig("FineWood",1)
-            },"A custom decorative piece.","clutter"),
-
-            // 27.
-            new RelicRegistration("M_bigplate","Large Porcelain Plate", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 28.
-            new RelicRegistration("M_cup1","Porcelain Tea Cup", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 29.
-            new RelicRegistration("M_justplate1","Large Porcelain Plate II", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 30.
-            new RelicRegistration("M_justcup1","Porcelain Tea Cup II", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 31.
-            new RelicRegistration("M_teapot","Porcelain Teapot", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 32.
-            new RelicRegistration("M_AsianTeaPot","Asian Teapot", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 33.
-            new RelicRegistration("M_AsianTeaCup","Asian Tea Cup", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 34.
-            new RelicRegistration("M_AsianTeaPotLid","Teapot Lid", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 35.
-            new RelicRegistration("M_ChineseVase","Chinese Vase", new[]{
-                new RequirementConfig("Crystal",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // 36.
-            new RelicRegistration("M_ChineseTeaSet","Chinese Tea Set", new[]{
-                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
-            },"A custom decorative piece.","clutter"),
-
-            // ---------------------- Lamps / Bench / Bin ---------
-
-            // 37.
             new RelicRegistration("M_Classic_Lamp","Classic Street Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"","building"),
 
-            // 38.
+            // 6.
             new RelicRegistration("M_Japanese_Lamp","Japanese Street Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"","building"),
 
-            // 39.
-            new RelicRegistration("M_Classic_Iron_Bench","Classic Iron Bench", new[]{
-                new RequirementConfig("Iron",2), new RequirementConfig("Wood",4)
-            },"Dvergr Forged Classic Iron Bench.","furniture"),
-
-            // 40.
+            // 7.
             new RelicRegistration("M_Classic_Double_Lamp","Classic Double Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"Dvergr Forged Classic Iron 2x Lamp.","building"),
 
-            // 41.
+            // 8.
             new RelicRegistration("M_Classic_Double_Lamp_2","Classic Double Lamp II", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"Dvergr Forged Classic Iron 2x Lamp.","building"),
 
-            // 42.
-            new RelicRegistration("M_classic_bin","Classic Garden Bin", new[]{
-                new RequirementConfig("Iron",2), new RequirementConfig("Wood",4)
-            },"Dvergr Forged Classic Iron Bin.","furniture"),
-
-            // 43.
+            // 9.
             new RelicRegistration("M_Classic_Single_Lamp","Classic Single Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"Dvergr Forged Classic Iron 1x Lamp.","building"),
 
-            // 44.
+            // 10.
             new RelicRegistration("M_Chinese_Lamp","Chinese Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"","building"),
 
-            // 45.
+            // 11.
             new RelicRegistration("M_classic_quad_light","Classic Quad Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"Dvergr Forged Classic Iron 4x Lamp.","building"),
 
-            // 46.
+            // 12.
             new RelicRegistration("M_Classic_Wall_Lamp","Classic Wall Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"Dvergr Forged Classic Iron Wall Lamp.","building"),
 
-            // 47.
+            // 13.
             new RelicRegistration("M_Classic_Wall_Lamp_2","Classic Wall Lamp II", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
             },"Dvergr Forged Classic Iron Wall Lamp.","building"),
 
-            // ---------------------- Cannons ---------------------
-
-            // 48.
-            new RelicRegistration("M_Pirate_Ship_Cannon","Pirate Cannon", new[]{
-                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
-            },"","building"),
-
-            // 49.
-            new RelicRegistration("M_Pirate_Ship_Cannon_Balls","Cannonballs", new[]{
-                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
-            },"","building"),
-
-            // 50.
-            new RelicRegistration("M_M1857_12Pounder_Cannon_Cannonballs","12-Pounder Cannonballs", new[]{
-                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
-            },"","building"),
-
-            // 51.
-            new RelicRegistration("M_M1857_12Pounder_Cannon","12-Pounder Cannon", new[]{
-                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
-            },"","building"),
-
-            // 52.
-            new RelicRegistration("M_BookShelf","Ancient Root Bookshelf", new[]{
-                new RequirementConfig("FineWood",20), new RequirementConfig("RoundLog",5), new RequirementConfig("Resin",4), new RequirementConfig("ElderBark",5)
-            },"","building"),
-
-            
-            // 53.
-            new RelicRegistration("M_VikingBed","Viking Chieftain’s Bed", new[]{
-                new RequirementConfig("FineWood",20), new RequirementConfig("WolfPelt",5), new RequirementConfig("LoxPelt",5), new RequirementConfig("IronNails",20)
-            },"","building"),
-            
-            // 53.
-            new RelicRegistration("M_Dreamkeel","Moonforged Dreamkeel", new[]{
-                new RequirementConfig("FineWood",5), new RequirementConfig("WolfPelt",1), new RequirementConfig("LoxPelt",2), new RequirementConfig("IronNails",4)
-            },"","building"),
-
-            // 54.
-            new RelicRegistration("M_LeafChair","Moonforged Leaf Chair", new[]{
-                new RequirementConfig("FineWood",5), new RequirementConfig("Dandelion",10), new RequirementConfig("Wood",5)
-            },"","building"),
-
-            // 55.
-            new RelicRegistration("M_Viking_Greathall_Table","Moonforged Viking Greathall Table", new[]{
-                new RequirementConfig("FineWood",20), new RequirementConfig("RoundLog",10), new RequirementConfig("Wood",25),new RequirementConfig("IronNails",10)
-            },"","building"),
-
-            // 56.
+            // 14.
             new RelicRegistration("M_GargoyleLamp","Moonforged Gargoyle Wall Lamp", new[]{
                 new RequirementConfig("Iron",2), new RequirementConfig("Resin",10), new RequirementConfig("GreydwarfEye",20)
             },"","building"),
 
-
-            // 57.
+            // 15.
             new RelicRegistration("M_DragonLamp","Moonforged Dragon Wall Lamp", new[]{
                 new RequirementConfig("Silver",10), new RequirementConfig("Resin",10), new RequirementConfig("GreydwarfEye",20)
             },"","building"),
 
-            // 58.
+            // 16.
             new RelicRegistration("M_CrowLamp","Moonforged Raven Wall Lamp", new[]{
                 new RequirementConfig("BlackMetal",2), new RequirementConfig("Resin",10), new RequirementConfig("GreydwarfEye",20)
-            },"","building")
+            },"","building"),
 
+            // ---------------------- Beds ----------------------
+
+            // 17.
+            new RelicRegistration("M_VikingBed","Viking Chieftain’s Bed", new[]{
+                new RequirementConfig("FineWood",20), new RequirementConfig("WolfPelt",5), new RequirementConfig("LoxPelt",5), new RequirementConfig("IronNails",20)
+            },"","building"),
+
+            // 18.
+            new RelicRegistration("M_Dreamkeel","Moonforged Dreamkeel", new[]{
+                new RequirementConfig("FineWood",5), new RequirementConfig("WolfPelt",1), new RequirementConfig("LoxPelt",2), new RequirementConfig("IronNails",4)
+            },"","building"),
+
+            // ---------------------- Chairs ----------------------
+
+            // 19.
+            new RelicRegistration("M_LeafChair","Moonforged Leaf Chair", new[]{
+                new RequirementConfig("FineWood",5), new RequirementConfig("Dandelion",10), new RequirementConfig("Wood",5)
+            },"","building"),
+
+            // ---------------------- Thrones ----------------------
+
+            // 20.
+            new RelicRegistration("M_FineWood_Throne","Moonforged FineWood Throne", new[]{
+                new RequirementConfig("FineWood",10)
+            },"A custom decorative piece.","furniture", 2),
+
+            // 21.
+new RelicRegistration("M_Werewolf_Throne","Moonforged Werewolf Throne", new[]{
+    new RequirementConfig("WolfPelt",5),
+    new RequirementConfig("TrophyFenring",3),
+    new RequirementConfig("Silver",5)
+},"A custom decorative piece.","furniture", 2),
+
+            // 22.
+new RelicRegistration("M_Wolf_Throne","Moonforged Geirrhafa`s Throne", new[]{
+    new RequirementConfig("FineWood",5),
+    new RequirementConfig("WolfPelt",5),
+    new RequirementConfig("Silver",5),
+    new RequirementConfig("TrophyCultist",1)
+},"A custom decorative piece.","furniture", 2),
+
+            // 23.
+new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
+    new RequirementConfig("Iron",10),
+    new RequirementConfig("BlackMetal",10)
+
+},"A custom decorative piece.","furniture", 2),
+
+            // ---------------------- Benches ----------------------
+
+            // 24.
+            new RelicRegistration("M_Classic_Iron_Bench","Classic Iron Bench", new[]{
+                new RequirementConfig("Iron",2), new RequirementConfig("Wood",4)
+            },"Dvergr Forged Classic Iron Bench.","furniture"),
+
+            // ---------------------- Rugs ----------------------
+
+            // 25.
+            new RelicRegistration("M_PersianRug_1","Persian Rug I", new[]{
+                new RequirementConfig("JuteRed",4),new RequirementConfig("DeerHide",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 26.
+            new RelicRegistration("M_PersianRug_2","Persian Rug II", new[]{
+                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 27.
+            new RelicRegistration("M_PersianRug_4","Regal Persian Rug", new[]{
+                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 28.
+            new RelicRegistration("M_Jute_Stairs_Rug","Jute Stair Rug", new[]{
+                new RequirementConfig("JuteRed",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 29.
+            new RelicRegistration("M_Jute_Stairs_Rug_Blue","Blue Jute Stair Rug", new[]{
+                new RequirementConfig("JuteBlue",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 30.
+            new RelicRegistration("M_Jute_Stairs_Rug_Blue_Runed","Runed Blue Jute Stair Rug", new[]{
+                new RequirementConfig("JuteBlue",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 31.
+            new RelicRegistration("M_Jute_Stairs_Rug_Small","Small Jute Stair Rug", new[]{
+                new RequirementConfig("JuteRed",2)
+            },"A custom decorative piece.","furniture"),
+
+            // 32.
+            new RelicRegistration("M_Jute_Stairs_Runed","Runed Jute Stair Rug", new[]{
+                new RequirementConfig("JuteRed",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 33.
+            new RelicRegistration("M_Stairs_Rug_Wool","Wool Stair Rug", new[]{
+                new RequirementConfig("DeerHide",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 34.
+            new RelicRegistration("M_Stairs_Rug_Green_Runed","Runed Green Stair Rug", new[]{
+                new RequirementConfig("JuteRed",4), new RequirementConfig("Ooze",1)
+            },"A custom decorative piece.","furniture"),
+
+            // 35.
+            new RelicRegistration("M_Stairs_Rug_Green","Green Stair Rug", new[]{
+                new RequirementConfig("JuteRed",4), new RequirementConfig("Ooze",1)
+            },"A custom decorative piece.","furniture"),
+
+            // 36.
+            new RelicRegistration("M_BlueRug","Blue Rug", new[]{
+                new RequirementConfig("JuteBlue",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 37.
+            new RelicRegistration("M_Red_2m_semiround_rug","Red Semiround Rug", new[]{
+                new RequirementConfig("JuteRed",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 38.
+            new RelicRegistration("M_2m_semiround_rug","Brown Semiround Rug", new[]{
+                new RequirementConfig("DeerHide",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 39.
+            new RelicRegistration("M_Jute_Round_Red_Rug","Round Red Jute Rug", new[]{
+                new RequirementConfig("JuteRed",4)
+            },"A custom decorative piece.","furniture"),
+
+            // 40.
+            new RelicRegistration("M_TrollRoundRug","Troll Hide Round Rug", new[]{
+                new RequirementConfig("TrollHide",5),new RequirementConfig("DeerHide",5)
+            },"A custom decorative piece.","furniture"),
+
+            // 41.
+            new RelicRegistration("M_TrollHideRug","Troll Hide Rug", new[]{
+                new RequirementConfig("TrollHide",10),new RequirementConfig("DeerHide",5)
+            },"A custom decorative piece.","furniture"),
+
+            // 42.
+            new RelicRegistration("M_TrollSemiRoundRug","Troll Hide Semi Round Rug", new[]{
+                new RequirementConfig("TrollHide",2),new RequirementConfig("DeerHide",5)
+            },"A custom decorative piece.","furniture"),
+
+            // 43.
+            new RelicRegistration("M_TrollSemiRoundRugRuned","Troll Hide Runed Semi Round Rug", new[]{
+                new RequirementConfig("TrollHide",2),new RequirementConfig("GreydwarfEye",2),
+            },"A custom decorative piece.","furniture"),
+
+            // 44.
+            new RelicRegistration("M_TrollPeltRug","Troll Pelt Rug", new[]{
+                new RequirementConfig("TrollHide",10), new RequirementConfig("TrophyForestTroll",1)
+            },"A custom decorative piece.","furniture"),
+
+            // 45.
+            new RelicRegistration("M_Jute_Red_Simple_Rug","Simple Red Jute Rug", new[]{
+                new RequirementConfig("JuteRed",2),new RequirementConfig("DeerHide",5)
+            },"A custom decorative piece.","furniture"),
+
+            // ---------------------- Tea Sets and Porcelain ----------------------
+
+            // 46.
+            new RelicRegistration("M_AsianTeaSetPlate","Tea Plate", new[]{
+                new RequirementConfig("Wood",1), new RequirementConfig("FineWood",1)
+            },"A custom decorative piece.","clutter"),
+
+            // 47.
+            new RelicRegistration("M_bigplate","Large Porcelain Plate", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 48.
+            new RelicRegistration("M_cup1","Porcelain Tea Cup", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 49.
+            new RelicRegistration("M_justplate1","Large Porcelain Plate II", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 50.
+            new RelicRegistration("M_justcup1","Porcelain Tea Cup II", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 51.
+            new RelicRegistration("M_teapot","Porcelain Teapot", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 52.
+            new RelicRegistration("M_AsianTeaPot","Asian Teapot", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 53.
+            new RelicRegistration("M_AsianTeaCup","Asian Tea Cup", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 54.
+            new RelicRegistration("M_AsianTeaPotLid","Teapot Lid", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 55.
+            new RelicRegistration("M_ChineseVase","Chinese Vase", new[]{
+                new RequirementConfig("Crystal",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // 56.
+            new RelicRegistration("M_ChineseTeaSet","Chinese Tea Set", new[]{
+                new RequirementConfig("Stone",5), new RequirementConfig("Resin",2)
+            },"A custom decorative piece.","clutter"),
+
+            // ---------------------- Bookshelves and Tables ----------------------
+
+            // 57.
+            new RelicRegistration("M_BookShelf","Ancient Root Bookshelf", new[]{
+                new RequirementConfig("FineWood",2), new RequirementConfig("RoundLog",2), new RequirementConfig("Resin",4), new RequirementConfig("ElderBark",5)
+            },"","building"),
+
+            // 58.
+            new RelicRegistration("M_Viking_Greathall_Table","Moonforged Viking Greathall Table", new[]{
+                new RequirementConfig("FineWood",20), new RequirementConfig("RoundLog",10), new RequirementConfig("Wood",25),new RequirementConfig("IronNails",10)
+            },"","building"),
+
+            // ---------------------- Bins ----------------------
+
+            // 59.
+            new RelicRegistration("M_classic_bin","Classic Garden Bin", new[]{
+                new RequirementConfig("Iron",2), new RequirementConfig("Wood",4)
+            },"Dvergr Forged Classic Iron Bin.","furniture"),
+
+            // ---------------------- Cannons ----------------------
+
+            // 60.
+            new RelicRegistration("M_Pirate_Ship_Cannon","Pirate Cannon", new[]{
+                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
+            },"","building"),
+
+            // 61.
+            new RelicRegistration("M_Pirate_Ship_Cannon_Balls","Cannonballs", new[]{
+                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
+            },"","building"),
+
+            // 62.
+            new RelicRegistration("M_M1857_12Pounder_Cannon_Cannonballs","12-Pounder Cannonballs", new[]{
+                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
+            },"","building"),
+
+            // 63.
+            new RelicRegistration("M_M1857_12Pounder_Cannon","12-Pounder Cannon", new[]{
+                new RequirementConfig("Iron",10), new RequirementConfig("Wood",4), new RequirementConfig("Resin",4)
+            },"","building"),
 
         };
 
@@ -372,32 +395,8 @@ new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
         {
             CustomHammerTabConfig = RelicConfigManager.AddEntry(
                 cfg, "Categories", "CustomHammerTab",
-                "",
-                "Optional Hammer tab override for all Moonforged Lights and Decor pieces. Enter any custom tab name here. Leave empty to keep the category settings below."
-            );
-
-            FurnitureCategoryConfig = RelicConfigManager.AddEntry(
-                cfg, "Categories", "FurnitureCategory",
                 "Moonforged Lights and Decor",
-                "Hammer tab name for all Moonforged furniture pieces."
-            );
-
-            BuildingCategoryConfig = RelicConfigManager.AddEntry(
-                cfg, "Categories", "BuildingCategory",
-                "Moonforged Lights and Decor",
-                "Hammer tab name for all Moonforged building pieces."
-            );
-
-            ClutterCategoryConfig = RelicConfigManager.AddEntry(
-                cfg, "Categories", "ClutterCategory",
-                "Moonforged Lights and Decor",
-                "Hammer tab name for all Moonforged clutter pieces."
-            );
-
-            StatuesCategoryConfig = RelicConfigManager.AddEntry(
-                cfg, "Categories", "StatuesCategory",
-                "Moonforged Lights and Decor",
-                "Hammer tab name for all Moonforged statue pieces."
+                "Hammer tab name for all Moonforged Lights and Decor pieces. Enter an existing category name or any new custom category name."
             );
         }
 
@@ -409,14 +408,7 @@ new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
             if (CustomHammerTabConfig != null && !string.IsNullOrWhiteSpace(CustomHammerTabConfig.Value))
                 return CustomHammerTabConfig.Value.Trim();
 
-            return category.ToLower() switch
-            {
-                "statue" => StatuesCategoryConfig != null ? StatuesCategoryConfig.Value : "Moonforged Statues",
-                "clutter" => ClutterCategoryConfig != null ? ClutterCategoryConfig.Value : "Moonforged Clutter",
-                "building" => BuildingCategoryConfig != null ? BuildingCategoryConfig.Value : "Moonforged Building",
-                "furniture" => FurnitureCategoryConfig != null ? FurnitureCategoryConfig.Value : "Moonforged Furniture",
-                _ => category
-            };
+            return "Moonforged Lights and Decor";
         }
 
         public static void RegisterAllRelics(AssetBundle bundle)
@@ -443,8 +435,12 @@ new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
             znv.m_persistent = true;
             znv.m_syncInitialScale = true;
 
-            if (!prefab.GetComponent<ZSyncTransform>())
-                prefab.AddComponent<ZSyncTransform>();
+            var zsync = prefab.GetComponent<ZSyncTransform>() ?? prefab.AddComponent<ZSyncTransform>();
+            zsync.m_syncPosition = false;
+            zsync.m_syncRotation = false;
+            zsync.m_syncScale = true;
+            zsync.m_syncBodyVelocity = false;
+            zsync.m_characterParentSync = false;
 
             Piece piece = prefab.GetComponent<Piece>() ?? prefab.AddComponent<Piece>();
             piece.m_name = reg.DisplayName;
@@ -473,6 +469,21 @@ new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
             bool isLamp = n.Contains("lamp") || n.Contains("lantern") || n.Contains("light");
             bool isCannon = n.Contains("cannon");
             bool isBenchOrBin = n.Contains("bench") || n.Contains("bin");
+
+            string displayNameLower = reg.DisplayName?.ToLowerInvariant() ?? "";
+            bool usageIsRug = isRug || displayNameLower.Contains("rug") || displayNameLower.Contains("carpet");
+
+            string[] usageTags;
+            if (isLamp)
+                usageTags = new[] { PieceUsages.Lighting };
+            else if (isCannon)
+                usageTags = new[] { PieceUsages.Defense };
+            else if (usageIsRug || isBenchOrBin ||
+                     n.Contains("throne") || n.Contains("bookshelf") || n.Contains("bed") ||
+                     n.Contains("dreamkeel") || n.Contains("chair") || n.Contains("table"))
+                usageTags = new[] { PieceUsages.Furniture };
+            else
+                usageTags = new[] { PieceUsages.Decor };
 
             if (isCeramic)
             {
@@ -553,6 +564,7 @@ new RelicRegistration("M_Iron_Throne","Moonforged Iron Throne", new[]{
             {
                 PieceTable = "Hammer",
                 Category = CategoryToTab(reg.Category),
+                Usage = usageTags,
                 CraftingStation = craftingStation,
                 Requirements = reg.Requirements
             };

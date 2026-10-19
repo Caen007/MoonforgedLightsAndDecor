@@ -16,6 +16,7 @@ namespace Moonforged.LightsAndDecor
         private LightFlicker[] flickers;
         private LightLod[] lods;
         private ParticleSystem[] particles;
+        private Transform[] flareObjects;
 
         private ZNetView znv;
 
@@ -56,6 +57,13 @@ namespace Moonforged.LightsAndDecor
             flickers = GetComponentsInChildren<LightFlicker>(true);
             lods = GetComponentsInChildren<LightLod>(true);
             particles = GetComponentsInChildren<ParticleSystem>(true);
+            flareObjects = System.Array.FindAll(GetComponentsInChildren<Transform>(true), t =>
+                t != transform && string.Equals(t.name, "flare", System.StringComparison.OrdinalIgnoreCase));
+            if (RelicConfigManager.EnableFlare != null)
+                RelicConfigManager.EnableFlare.SettingChanged += OnFlareSettingChanged;
+            ApplyFlareState();
+            if (RelicConfigManager.BulbBrightness != null)
+                RelicConfigManager.BulbBrightness.SettingChanged += OnBulbBrightnessChanged;
 
             Collider col = GetComponentInChildren<Collider>();
             if (col == null)
@@ -230,13 +238,17 @@ namespace Moonforged.LightsAndDecor
             {
                 foreach (var m in r.materials)
                 {
+                    if (m == null || !m.name.StartsWith("M_Bulb")) continue;
+                    TintBulbMaterial(m, c);
                     if (m.HasProperty("_EmissionColor"))
                     {
                         m.EnableKeyword("_EMISSION");
-                        m.SetColor("_EmissionColor", c * 3f);
+                        m.SetColor("_EmissionColor", c * GetBulbBrightness());
                     }
                 }
             }
+
+            ApplyFlareState();
         }
 
         public string GetHoverText()
@@ -266,5 +278,77 @@ namespace Moonforged.LightsAndDecor
 
         public string GetHoverName() => "Lamp";
         public float GetHoverOffset() => 0f;
+
+        private void OnFlareSettingChanged(object sender, System.EventArgs e)
+        {
+            ApplyFlareState();
+        }
+
+        private void ApplyFlareState()
+        {
+            if (flareObjects == null) return;
+            bool enabled = index != OFF_INDEX &&
+                (RelicConfigManager.EnableFlare == null || RelicConfigManager.EnableFlare.Value);
+            foreach (var flare in flareObjects)
+            {
+                if (!flare) continue;
+                if (!enabled)
+                {
+                    foreach (var particle in flare.GetComponentsInChildren<ParticleSystem>(true))
+                        if (particle) particle.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+                }
+                flare.gameObject.SetActive(enabled);
+                if (enabled)
+                {
+                    foreach (var particle in flare.GetComponentsInChildren<ParticleSystem>(true))
+                        if (particle && particle.gameObject.activeInHierarchy && !particle.isPlaying) particle.Play(false);
+                }
+            }
+        }
+
+        private static float GetBulbBrightness()
+        {
+            return RelicConfigManager.BulbBrightness != null ? RelicConfigManager.BulbBrightness.Value : 1.5f;
+        }
+
+        private static void TintBulbMaterial(Material material, Color color)
+        {
+            if (material.HasProperty("_Color"))
+            {
+                Color tint = color;
+                tint.a = material.GetColor("_Color").a;
+                material.SetColor("_Color", tint);
+            }
+            if (material.HasProperty("_BaseColor"))
+            {
+                Color tint = color;
+                tint.a = material.GetColor("_BaseColor").a;
+                material.SetColor("_BaseColor", tint);
+            }
+        }
+
+        private void OnBulbBrightnessChanged(object sender, System.EventArgs e)
+        {
+            if (bulbRenderers == null) return;
+            Color color = index == CUSTOM_INDEX ? UnpackColor(customColorPacked) : colors[NormalizeIndex(index) == OFF_INDEX ? 0 : NormalizeIndex(index)];
+            foreach (var renderer in bulbRenderers)
+            {
+                if (!renderer) continue;
+                foreach (var material in renderer.materials)
+                {
+                    if (material == null || !material.name.StartsWith("M_Bulb")) continue;
+                    if (material.HasProperty("_EmissionColor"))
+                        material.SetColor("_EmissionColor", index == OFF_INDEX ? Color.black : color * GetBulbBrightness());
+                }
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (RelicConfigManager.EnableFlare != null)
+                RelicConfigManager.EnableFlare.SettingChanged -= OnFlareSettingChanged;
+            if (RelicConfigManager.BulbBrightness != null)
+                RelicConfigManager.BulbBrightness.SettingChanged -= OnBulbBrightnessChanged;
+        }
     }
 }
